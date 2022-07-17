@@ -1,3 +1,6 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -5,7 +8,7 @@
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul 16 21:24:05 2022
+# Make data base, printed on Sat Jul 16 21:35:24 2022
 
 # Variables
 
@@ -90,7 +93,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 6473
+GIO_LAUNCHED_DESKTOP_FILE_PID = 7725
 # automatic
 %F = $(notdir $%)
 # environment
@@ -192,7 +195,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 6473
+VSCODE_PID = 7725
 # variable set hash-table stats:
 # Load=92/1024=9%, Rehash=0, Collisions=12/117=10%
 
@@ -202,9 +205,9 @@ VSCODE_PID = 6473
 
 # Directories
 
-# . (device 2053, inode 1058692): 15 files, no impossibilities.
+# . (device 2053, inode 1058692): 17 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 17 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -274,15 +277,13 @@ build:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 178 B / avg = 8 B
-# current buf: size = 8162 B / used = 178 B / count = 22 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 24 / storage = 197 B / avg = 8 B
+# current buf: size = 8162 B / used = 197 B / count = 24 / avg = 8 B
 
-# strcache performance: lookups = 28 / hit rate = 21%
+# strcache performance: lookups = 30 / hit rate = 20%
 # hash-table stats:
-# Load=22/8192=0%, Rehash=0, Collisions=1/28=4%
+# Load=24/8192=0%, Rehash=0, Collisions=1/30=3%
  
-make: *** No rule to make target 'all'.  Stop.
-
-# Finished Make data base on Sat Jul 16 21:24:05 2022
+# Finished Make data base on Sat Jul 16 21:35:24 2022
 
  
