@@ -2,6 +2,15 @@
 
 [extern print]
 [extern readkey]
+[extern move_cursor_down]
+[extern move_cursor_left]
+[extern move_cursor_right]
+[extern move_cursor_up]
+[extern copychar]
+[extern pastchar]
+
+global loop
+
 section .text
 
 global _start
@@ -75,92 +84,6 @@ loop:
     je pastchar
     jmp loop
 
-copychar:
-    mov ax, [0xb8000+160*25]
-    mov [0xb8000+2+(160*25)], ax
-    jmp loop
-
-pastchar:
-    movzx edx, word [es:cursorx]
-    mov ax, [0xb8000+2+(160*25)]
-    mov [0xb8000+160*25], ax
-    mov ah, 0xf0
-    mov [0xb8000+edx*2], ax
-    jmp loop
-
-move_cursor_right:
-    movzx edx, word [es:cursorx]
-    cmp edx, 1999
-    je .wait
-    mov ax, [ 0xb8000 + 160 * 25 ]
-    mov word [ 0xB8000 + edx * 2 ], ax
-    add edx, 1   
-    mov ax, [ 0xb8000+edx*2 ]
-    mov word [ 0xb8000 + 160 * 25 ], ax
-    mov ah, 0xf0
-    mov word [ 0xB8000 + edx * 2 ], ax
-    mov [es:cursorx], edx
-.wait:
-    in al, 0x60
-    cmp al, 0xCD
-    je loop
-    jmp .wait
-
-move_cursor_left:
-    movzx edx, word [es:cursorx]  
-    cmp edx, 0
-    je .wait
-    mov ax, [ 0xb8000 + 160 * 25 ]
-    mov word [ 0xB8000 + edx * 2 ], ax
-    sub edx, 1
-    mov ax, [ 0xb8000+edx*2 ]
-    mov word [ 0xb8000 + 160 * 25 ], ax
-    mov ah, 0xf0
-    mov word [ 0xB8000 + edx * 2 ], ax
-    mov [es:cursorx], edx
-.wait:
-    in al, 0x60
-    cmp al, 0xCB
-    je loop
-    jmp .wait
-
-move_cursor_up:
-    movzx edx, word [es:cursorx]
-    cmp edx, 79
-    jle .wait
-    mov ax, [ 0xb8000 + 160 * 25 ]
-    mov word [ 0xB8000 + edx * 2 ], ax
-    sub edx, 80
-    mov ax, [ 0xb8000+edx*2 ]
-    mov word [ 0xb8000 + 160 * 25 ], ax
-    mov ah, 0xf0
-    mov word [ 0xB8000 + edx * 2 ], ax
-    mov [es:cursorx], edx
-.wait:
-    in al, 0x60
-    cmp al, 0xC8
-    je loop
-    jmp .wait
-    
-
-move_cursor_down:
-    movzx edx, word [es:cursorx]
-    cmp edx, 1920
-    jge .wait
-    mov ax, [ 0xb8000 + 160 * 25 ]
-    mov word [ 0xB8000 + edx * 2 ], ax
-    add edx, 80
-    mov ax, [ 0xb8000+edx*2 ]
-    mov word [ 0xb8000 + 160 * 25 ], ax
-    mov ah, 0xf0
-    mov word [ 0xB8000 + edx * 2 ], ax
-    mov [es:cursorx], edx
-.wait:
-    in al, 0x60
-    cmp al, 0xD0
-    je loop
-    jmp .wait
-
 ctrld:
     mov byte [ctrldown], 1
     jmp loop
@@ -185,7 +108,5 @@ ester_egg:
     ester_egg_msg: times 80 db " "
     ester_egg_msg_build: db "DISCO",0
     paint: db "abcdefghijklmnopqrxtuvwxyz.,!",0x0D,0
-
-    cursorx: dw 0
 
     ctrldown: db 0
