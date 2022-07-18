@@ -1,13 +1,6 @@
 [bits 32]
 
-global move_cursor_down
-global move_cursor_left
-global move_cursor_right
-global move_cursor_up
-global pastchar
-global copychar
-
-[extern loop]
+%include "headers/cursor.inc"
 
 move_cursor_right:
     movzx edx, word [es:cursorx]
@@ -95,4 +88,13 @@ pastchar:
     mov [0xb8000+edx*2], ax
     jmp loop
 
+enablecursor:
+    mov byte [es:cursorenabled], 1
+    ret
+
+disablecursor:
+    mov byte [es:cursorenabled], 0
+    ret
+
 cursorx: dw 0
+cursorenabled: db 0

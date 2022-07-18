@@ -1,31 +1,27 @@
 [bits 32]
 
-[extern print]
-[extern readkey]
-[extern move_cursor_down]
-[extern move_cursor_left]
-[extern move_cursor_right]
-[extern move_cursor_up]
-[extern copychar]
-[extern pastchar]
-
-global loop
+%include "headers/kernal.inc"
 
 section .text
 
-global _start
-
 _start:
 
+    mov ah, 0x11
+    mov al, ' '
+    mov [0xb8000 + 160 * 25], ax
+    
+    mov ah, 0x11
+    call clrscrn
+    
     mov esi, welcome
-    mov ah, 0x0f
+    mov ah, 0x1f
     mov ebx, 0xb8000+50+160*9
     mov edx, 10
     mov ecx, 25
     call print
 
     mov esi, paint
-    mov ah, 0x0f
+    mov ah, 0x1f
     mov ebx, 0xb8000+6
     mov edx, 0
     mov ecx, 0
@@ -87,9 +83,11 @@ loop:
 ctrld:
     mov byte [ctrldown], 1
     jmp loop
+
 ctrlu:
     mov byte [ctrldown], 0
     jmp loop
+
 ester_egg:
     inc ah
     mov esi, ester_egg_msg
@@ -104,9 +102,19 @@ ester_egg:
     call print
     jmp ester_egg
 
-    welcome: db "&7Welcome to Guinea OS!",1,"Made by Markian V.",1,"Verson: 1.0 | Build: 300",1,1,"&15Cursor Time!",0
+clrscrn:
+    mov esi, fill
+    mov ebx, 0xb8000
+    mov edx, 0
+    mov ecx,0
+    call print
+    ret
+
+    welcome: db "Welcome to Guinea OS!",1,"Made by Markian V.",1,"Verson: 1.0 | Build: 300",1,1,"Cursor Time!",0
     ester_egg_msg: times 80 db " "
     ester_egg_msg_build: db "DISCO",0
     paint: db "abcdefghijklmnopqrxtuvwxyz.,!",0x0D,0
+
+    fill: times 2000 db " "
 
     ctrldown: db 0
