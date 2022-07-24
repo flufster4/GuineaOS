@@ -4,3 +4,4 @@
 [extern move_cursor_up]
 [extern copychar]
 [extern pastchar]
+[extern cursorx]
