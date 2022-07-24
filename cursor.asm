@@ -1,6 +1,6 @@
 [bits 32]
 
-%include "headers/cursor.inc"
+%include "headers/cursor.asm.inc"
 
 move_cursor_right:
     movzx edx, word [es:cursorx]

@@ -1,12 +1,6 @@
-global move_cursor_down
-global move_cursor_left
-global move_cursor_right
-global move_cursor_up
-global pastchar
-global copychar
-global cursorenabled
-global cursorx
-global disablecursor
-global enablecursor
-
-[extern loop]
+[extern move_cursor_down]
+[extern move_cursor_left]
+[extern move_cursor_right]
+[extern move_cursor_up]
+[extern copychar]
+[extern pastchar]

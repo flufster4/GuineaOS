@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul 16 21:35:24 2022
+# Make data base, printed on Sun Jul 24 09:47:00 2022
 
 # Variables
 
@@ -47,7 +45,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/share/code/code
 # environment
-JOURNAL_STREAM = 8:36846
+JOURNAL_STREAM = 8:39027
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -63,7 +61,7 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/d
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
-MANAGERPID = 1221
+MANAGERPID = 1239
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -75,7 +73,7 @@ PATH = /home/markian/cross_compilers/bin:/usr/local/sbin:/usr/local/bin:/usr/sbi
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/markian-OptiPlex-360:@/tmp/.ICE-unix/1428,unix/markian-OptiPlex-360:/tmp/.ICE-unix/1428
+SESSION_MANAGER = local/markian-OptiPlex-360:@/tmp/.ICE-unix/1450,unix/markian-OptiPlex-360:/tmp/.ICE-unix/1450
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -83,7 +81,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 53e744f62d374d579f4e3f0fd7fe8c9e
+INVOCATION_ID = c2cbb5a11f8f4c18888d3be3512092e2
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -93,7 +91,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 7725
+GIO_LAUNCHED_DESKTOP_FILE_PID = 1946
 # automatic
 %F = $(notdir $%)
 # environment
@@ -103,7 +101,7 @@ PWD = /home/markian/Desktop/GuineaOS
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1391
+SSH_AGENT_PID = 1413
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -195,7 +193,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 7725
+VSCODE_PID = 1946
 # variable set hash-table stats:
 # Load=92/1024=9%, Rehash=0, Collisions=12/117=10%
 
@@ -205,9 +203,9 @@ VSCODE_PID = 7725
 
 # Directories
 
-# . (device 2053, inode 1058692): 17 files, no impossibilities.
+# . (device 2053, inode 1058692): 19 files, no impossibilities.
 
-# 17 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -225,7 +223,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-13 17:09:24.192508
+#  Last modified 2022-07-20 15:18:56.163913609
 #  File has been updated.
 #  Successfully updated.
 
@@ -233,7 +231,7 @@ debug:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 17):
+#  recipe to execute (from 'Makefile', line 18):
 	echo compiling code...
 	nasm "boot.asm" -f bin -o "bin/boot.bin"
 	nasm "kernel.asm" -f elf -o "bin/kernel.o"
@@ -257,8 +255,9 @@ build:
 	nasm "zeroes.asm" -f bin -o "bin/zeroes.bin"
 	nasm "string.asm" -f elf -o "bin/string.o"
 	nasm "drivers/ps2keyboard.asm" -f elf -o "bin/ps2keyboard.o"
+	nasm "cursor.asm" -f elf -o "bin/cursor.o"
 	echo linking...
-	i386-elf-ld -o "bin/full_kernel.bin" -Ttext 0x1000 "./bin/kernel.o" "./bin/string.o" "./bin/ps2keyboard.o" --oformat binary 2>&1 | tee "./log/ld.log"
+	i386-elf-ld -o "bin/full_kernel.bin" -Ttext 0x1000 "./bin/kernel.o" "./bin/string.o" "./bin/ps2keyboard.o" "./bin/cursor.o" --oformat binary 2>&1 | tee "./log/ld.log"
 	cat "bin/boot.bin" "bin/full_kernel.bin" "bin/zeroes.bin"  > "bin/GuineaOS.bin"
 	echo running...
 	qemu-system-x86_64 -drive format=raw,file="bin/GuineaOS.bin",index=0,if=floppy,  -m 2048M, -serial mon:stdio 2>&1 | tee "./log/qemu.log"
@@ -277,13 +276,15 @@ build:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 24 / storage = 197 B / avg = 8 B
-# current buf: size = 8162 B / used = 197 B / count = 24 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 26 / storage = 218 B / avg = 8 B
+# current buf: size = 8162 B / used = 218 B / count = 26 / avg = 8 B
 
-# strcache performance: lookups = 30 / hit rate = 20%
+# strcache performance: lookups = 32 / hit rate = 18%
 # hash-table stats:
-# Load=24/8192=0%, Rehash=0, Collisions=1/30=3%
  
-# Finished Make data base on Sat Jul 16 21:35:24 2022
+make: *** No rule to make target 'all'.  Stop.
+
+# Load=26/8192=0%, Rehash=0, Collisions=1/32=3%
+# Finished Make data base on Sun Jul 24 09:47:00 2022
 
  

@@ -1,6 +1,8 @@
 [bits 32]
 
 global print
+global fill
+global clrscrn
 
 print:
     lodsb
@@ -118,3 +120,13 @@ print:
     jmp print
 pd:
 	ret
+
+clrscrn:
+    mov esi, fill
+    mov ebx, 0xb8000
+    mov edx, 0
+    mov ecx,0
+    call print
+    ret
+
+fill: times 2000 db " "

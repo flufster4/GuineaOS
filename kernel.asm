@@ -1,6 +1,8 @@
 [bits 32]
 
-%include "headers/kernal.inc"
+%include "headers/kernal.asm.inc"
+%include "headers/cursor.inc"
+%include "headers/screen.inc"
 
 section .text
 
@@ -102,19 +104,9 @@ ester_egg:
     call print
     jmp ester_egg
 
-clrscrn:
-    mov esi, fill
-    mov ebx, 0xb8000
-    mov edx, 0
-    mov ecx,0
-    call print
-    ret
-
     welcome: db "Welcome to Guinea OS!",1,"Made by Markian V.",1,"Verson: 1.0 | Build: 300",1,1,"Cursor Time!",0
     ester_egg_msg: times 80 db " "
     ester_egg_msg_build: db "DISCO",0
     paint: db "abcdefghijklmnopqrxtuvwxyz.,!",0x0D,0
-
-    fill: times 2000 db " "
 
     ctrldown: db 0
