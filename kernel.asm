@@ -59,8 +59,6 @@ loop:
     je ctrld
     cmp al, 0x9D
     je ctrlu
-    cmp al, 0x19
-    je ester_egg
     cmp al, 0x4D
     je move_cursor_right
     cmp al, 0x4B
@@ -77,9 +75,7 @@ loop:
 
     jmp loop
 
-.ctrlkeys:
-    cmp al, 0x20
-    je ester_egg    
+.ctrlkeys: 
     cmp al, 0x2E
     je copychar
     cmp al, 0x2F
@@ -94,23 +90,7 @@ ctrlu:
     mov byte [ctrldown], 0
     jmp loop
 
-ester_egg:
-    inc ah
-    mov esi, ester_egg_msg
-    mov ebx, 0xb8000+160*24
-    mov edx, 0
-    mov ecx, 0
-    call print
-    mov esi, ester_egg_msg_build
-    mov ebx, 0xb8000+160*11+94
-    mov edx, 0
-    mov ecx, 0
-    call print
-    jmp ester_egg
-
     welcome: db "Welcome to Guinea OS!",1,"Made by Markian V.",1,"Verson: 1.0 | Build: 300",1,1,"Cursor Time!",0
-    ester_egg_msg: times 80 db " "
-    ester_egg_msg_build: db "DISCO",0
     paint: db "abcdefghijklmnopqrxtuvwxyz.,!",0x0D,0
 
     ctrldown: db 0
