@@ -67,8 +67,8 @@ loop:
     je move_cursor_up
     cmp al, 0x50
     je move_cursor_down
-    cmp al, 0x02
-    je paint_main
+;    cmp al, 0x02
+;    je paint_main
 
     cmp byte [ctrldown], 1
     je .ctrlkeys

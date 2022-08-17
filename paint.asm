@@ -10,7 +10,6 @@ paint_main:
     mov ah, 0x11
     call clrscrn
 
-    mov word [es:cursorx], 160
     mov ah, 0xff
     mov al, ' '
     mov word [0xb8000+160*2], ax
@@ -24,6 +23,70 @@ paint_main:
     mov esi, bar
     mov ebx, 0xb8000+160
     call print
+
+    mov ah, 0x00
+    mov al, ' '
+    mov word [0xb8000+72], ax
+    mov ah, 0x11
+    mov word [0xb8000+74], ax
+    mov ah, 0x22
+    mov word [0xb8000+76], ax
+    mov ah, 0x33
+    mov word [0xb8000+78], ax
+    mov ah, 0x44
+    mov word [0xb8000+80], ax
+    mov ah, 0x55
+    mov word [0xb8000+82], ax
+    mov ah, 0x66
+    mov word [0xb8000+84], ax
+    mov ah, 0x88
+    mov word [0xb8000+86], ax
+    mov ah, 0x99
+    mov word [0xb8000+88], ax
+    mov ah, 0xaa
+    mov word [0xb8000+90], ax
+    mov ah, 0xbb
+    mov word [0xb8000+92], ax
+    mov ah, 0xcc
+    mov word [0xb8000+94], ax
+    mov ah, 0xdd
+    mov word [0xb8000+96], ax
+    mov ah, 0xee
+    mov word [0xb8000+98], ax
+    mov ah, 0xff
+    mov word [0xb8000+100], ax
+
+    mov ah, 0x70
+    mov al, '0'
+    mov word [0xb8000+72+160], ax
+    mov al, '1'
+    mov word [0xb8000+74+160], ax
+    mov al, '2'
+    mov word [0xb8000+76+160], ax
+    mov al, '3'
+    mov word [0xb8000+78+160], ax
+    mov al, '4'
+    mov word [0xb8000+80+160], ax
+    mov al, '5'
+    mov word [0xb8000+82+160], ax
+    mov al, '6'
+    mov word [0xb8000+84+160], ax
+    mov al, '7'
+    mov word [0xb8000+86+160], ax
+    mov al, '8'
+    mov word [0xb8000+88+160], ax
+    mov al, '9'
+    mov word [0xb8000+90+160], ax
+    mov al, 'a'
+    mov word [0xb8000+92+160], ax
+    mov al, 'b'
+    mov word [0xb8000+94+160], ax
+    mov al, 'c'
+    mov word [0xb8000+96+160], ax
+    mov al, 'd'
+    mov word [0xb8000+98+160], ax
+    mov al, 'e'
+    mov word [0xb8000+100+160], ax
 
 paint_loop:
          
@@ -42,6 +105,8 @@ paint_loop:
     je ctrld
     cmp al, 0x9D
     je ctrlu
+    cmp al, 0x02
+
 
     cmp byte [ctrldown], 1
     je .ctrlkeys
@@ -103,7 +168,7 @@ move_cursor_left:
 
 move_cursor_up:
     movzx edx, word [es:cursorx]
-    cmp edx, 79
+    cmp edx, 239
     jle .wait
     mov ax, [ 0xb8000 + 160 * 25 ]
     mov word [ 0xB8000 + edx * 2 ], ax
@@ -146,6 +211,6 @@ pastchar:
     mov [0xb8000+edx*2], ax
     jmp paint_loop
 
-cursorx: dw 0
+cursorx: dw 160
 bar: times 80 db ' '
 ctrldown: db 0
