@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug 17 09:22:08 2022
+# Make data base, printed on Tue Oct  4 18:23:15 2022
 
 # Variables
 
@@ -47,7 +47,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/share/code/code
 # environment
-JOURNAL_STREAM = 8:38413
+JOURNAL_STREAM = 8:38556
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -63,7 +63,7 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/d
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
-MANAGERPID = 1262
+MANAGERPID = 1284
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -75,7 +75,7 @@ PATH = /home/markian/cross_compilers/bin:/usr/local/sbin:/usr/local/bin:/usr/sbi
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/markian-OptiPlex-360:@/tmp/.ICE-unix/1471,unix/markian-OptiPlex-360:/tmp/.ICE-unix/1471
+SESSION_MANAGER = local/markian-OptiPlex-360:@/tmp/.ICE-unix/1497,unix/markian-OptiPlex-360:/tmp/.ICE-unix/1497
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -83,7 +83,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = e7d05cb73cf84f4d8493812d0fee2c01
+INVOCATION_ID = c59e6eb5e7bb4546922bc95ce40c49eb
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -93,7 +93,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2192
+GIO_LAUNCHED_DESKTOP_FILE_PID = 5900
 # automatic
 %F = $(notdir $%)
 # environment
@@ -103,7 +103,7 @@ PWD = /home/markian/Desktop/GuineaOS
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1432
+SSH_AGENT_PID = 1460
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -115,11 +115,11 @@ HOME = /home/markian
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-VSCODE_CODE_CACHE_PATH = /home/markian/.config/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+VSCODE_CODE_CACHE_PATH = /home/markian/.config/Code/CachedData/74b1f979648cc44d385a2286793c226e611f59e7
 # environment
 LOGNAME = markian
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -155,9 +155,7 @@ MAKE_COMMAND := make
 # automatic
 *F = $(notdir $*)
 # environment
- 
-VSCODE_IPC_HOOK = /run/user/1000/vscode-ebcf08e8-1.69.2-main.sock
- 
+VSCODE_IPC_HOOK = /run/user/1000/vscode-ebcf08e8-1.71.2-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -197,7 +195,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2192
+VSCODE_PID = 5900
 # variable set hash-table stats:
 # Load=92/1024=9%, Rehash=0, Collisions=12/117=10%
 
@@ -227,7 +225,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-24 09:57:55.545819204
+#  Last modified 2022-08-18 12:41:00.815799831
 #  File has been updated.
 #  Successfully updated.
 
@@ -248,7 +246,7 @@ build:
 	i386-elf-ld -o "bin/full_kernel.bin" -Ttext 0x1000 "./bin/kernel.o" "./bin/screen.o" "./bin/ps2keyboard.o" "./bin/cursor.o" "./bin/paint.o" --oformat binary 2>&1 | tee "./log/ld.log"
 	cat "bin/boot.bin" "bin/full_kernel.bin" "bin/zeroes.bin"  > "bin/GuineaOS.bin"
 	echo running...
-	qemu-system-x86_64 -drive format=raw,file="bin/GuineaOS.bin",index=0,if=floppy,  -m 2048M, -serial mon:stdio 2>&1 | tee "./log/qemu.log"
+	qemu-system-x86_64 -drive format=raw,file="bin/GuineaOS.bin",index=0,if=floppy,   -d pcall,int,cpu_reset -m 2048M, -serial mon:stdio 2>&1 | tee "./log/qemu.log"
 
 # Not a target:
 .DEFAULT:
@@ -270,6 +268,6 @@ build:
 # strcache performance: lookups = 30 / hit rate = 16%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=1/30=3%
-# Finished Make data base on Wed Aug 17 09:22:08 2022
+# Finished Make data base on Tue Oct  4 18:23:15 2022
 
  

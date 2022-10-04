@@ -13,4 +13,4 @@ build:
 	cat "bin/boot.bin" "bin/full_kernel.bin" "bin/zeroes.bin"  > "bin/GuineaOS.bin"
 
 	echo running...
-	qemu-system-x86_64 -drive format=raw,file="bin/GuineaOS.bin",index=0,if=floppy,  -m 2048M, -serial mon:stdio 2>&1 | tee "./log/qemu.log"
+	qemu-system-x86_64 -drive format=raw,file="bin/GuineaOS.bin",index=0,if=floppy,   -d pcall,int,cpu_reset -m 2048M, -serial mon:stdio 2>&1 | tee "./log/qemu.log"

@@ -8,5 +8,6 @@ global cursorenabled
 global cursorx
 global disablecursor
 global enablecursor
+global cursorsize
 
 [extern loop]

@@ -97,4 +97,5 @@ disablecursor:
     ret
 
 cursorx: dw 0
+cursorsize: dw 0
 cursorenabled: db 0
