@@ -155,7 +155,6 @@ crash_screen:
     call print
     mov eax
 
-
     hlt
 
 ;eax - input | eax - output
@@ -179,10 +178,7 @@ toString:
     je .done
     call .tostringconvertloop
 .done:
-    lea eax, [edx+'0']
-    mov ecx, 0
-    mov edx,0
-    call print
+    mov [print_string_video_offset], 0
     ret
 
     welcome: db "Welcome to Guinea OS!",1,"Made by Markian V.",1,"Verson: 1.0 | Build: 500",1,1,"Cursor Time!",0
