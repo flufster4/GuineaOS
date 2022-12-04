@@ -153,7 +153,6 @@ crash_screen:
     mov esi, crash_edx_text
     mov ebx, 0xb8000+160*8
     call print
-    mov eax
 
     hlt
 
