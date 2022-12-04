@@ -153,11 +153,39 @@ crash_screen:
     mov esi, crash_edx_text
     mov ebx, 0xb8000+160*8
     call print
-    ;TODO: make edx print value
+    mov eax
+
 
     hlt
 
-    welcome: db "Welcome to Guinea OS!",1,"Made by Markian V.",1,"Verson: 1.0 | Build: 300",1,1,"Cursor Time!",0
+;eax - input | eax - output
+toString:
+.tostringconvertloop:
+    xor edx, edx
+    mov ebx, 10
+    div ebx
+
+    push eax
+    movzx eax, word [es:print_string_video_offset]
+    add edx, '0'
+    mov bl, dl
+    mov bh, 0x4f
+    mov [0xb8000+eax*2], bx
+    inc eax
+    mov [es:print_string_video_offset], eax
+    pop eax
+
+    test eax, eax
+    je .done
+    call .tostringconvertloop
+.done:
+    lea eax, [edx+'0']
+    mov ecx, 0
+    mov edx,0
+    call print
+    ret
+
+    welcome: db "Welcome to Guinea OS!",1,"Made by Markian V.",1,"Verson: 1.0 | Build: 500",1,1,"Cursor Time!",0
     paint: db "abcdefghijklmnopqrxtuvwxyz.,!",0x0D,0
 
     ctrldown: db 0
@@ -182,3 +210,13 @@ crash_screen:
     CRASH_REASON_OVERFLOW: db "Memory overflow",0
     CRASH_REASON_UNKNOWN: db "Unknown failure",0
     CRASH_REASON_DRIVER_FAILURE: db "Driver failure",0
+
+    ;--------------------------------------
+    ;               Buffers
+    ;-------------------------------------- 
+    print_string_video_offset: dw 0
+
+    ;--------------------------------------
+    ;              Constants
+    ;--------------------------------------
+    const10: db 10

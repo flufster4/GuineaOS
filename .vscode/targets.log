@@ -2,35 +2,64 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target 'all'.  Stop.
 
 # GNU Make 4.2.1
+ 
 # Built for x86_64-pc-linux-gnu
+ 
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
+ 
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+ 
 # This is free software: you are free to change and redistribute it.
+ 
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Tue Oct  4 18:23:15 2022
+ 
+# Make data base, printed on Sun Dec  4 11:21:30 2022
+ 
 
 # Variables
+ 
 
+ 
 # 'override' directive
+ 
 GNUMAKEFLAGS := 
+ 
 # automatic
+ 
 <D = $(patsubst %/,%,$(dir $<))
+ 
 # automatic
+ 
 ?F = $(notdir $?)
+ 
 # environment
+ 
 DESKTOP_SESSION = ubuntu
+ 
 # default
+ 
 .SHELLFLAGS := -c
+ 
 # environment
+ 
 XDG_SESSION_CLASS = user
+ 
 # environment
+ 
 XDG_SESSION_TYPE = x11
+ 
 # automatic
+ 
 ?D = $(patsubst %/,%,$(dir $?))
+ 
 # environment
+ 
 IM_CONFIG_PHASE = 1
+ 
 # automatic
+ 
 @D = $(patsubst %/,%,$(dir $@))
 # environment
 XAUTHORITY = /run/user/1000/gdm/Xauthority
@@ -47,7 +76,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/share/code/code
 # environment
-JOURNAL_STREAM = 8:38556
+JOURNAL_STREAM = 8:38076
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -63,7 +92,7 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/d
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
-MANAGERPID = 1284
+MANAGERPID = 1219
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -75,7 +104,7 @@ PATH = /home/markian/cross_compilers/bin:/usr/local/sbin:/usr/local/bin:/usr/sbi
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/markian-OptiPlex-360:@/tmp/.ICE-unix/1497,unix/markian-OptiPlex-360:/tmp/.ICE-unix/1497
+SESSION_MANAGER = local/markian-OptiPlex-360:@/tmp/.ICE-unix/1426,unix/markian-OptiPlex-360:/tmp/.ICE-unix/1426
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -83,7 +112,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = c59e6eb5e7bb4546922bc95ce40c49eb
+INVOCATION_ID = 0cd7588c1362443aa3edeead95fbcdb4
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -93,7 +122,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 5900
+GIO_LAUNCHED_DESKTOP_FILE_PID = 1850
 # automatic
 %F = $(notdir $%)
 # environment
@@ -103,7 +132,7 @@ PWD = /home/markian/Desktop/GuineaOS
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1460
+SSH_AGENT_PID = 1389
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -115,7 +144,7 @@ HOME = /home/markian
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
-VSCODE_CODE_CACHE_PATH = /home/markian/.config/Code/CachedData/74b1f979648cc44d385a2286793c226e611f59e7
+VSCODE_CODE_CACHE_PATH = /home/markian/.config/Code/CachedData/d045a5eda657f4d7b676dedbfa7aab8207f8a075
 # environment
 LOGNAME = markian
 # environment
@@ -155,7 +184,7 @@ MAKE_COMMAND := make
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-ebcf08e8-1.71.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-ebcf08e8-1.72.2-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -195,7 +224,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 5900
+VSCODE_PID = 1850
 # variable set hash-table stats:
 # Load=92/1024=9%, Rehash=0, Collisions=12/117=10%
 
@@ -268,6 +297,6 @@ build:
 # strcache performance: lookups = 30 / hit rate = 16%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=1/30=3%
-# Finished Make data base on Tue Oct  4 18:23:15 2022
+# Finished Make data base on Sun Dec  4 11:21:30 2022
 
  
